@@ -1,12 +1,15 @@
 class Restaurant:    
     import csv
+    import json
 
     def __init__(self, csv_file_name):
         self.restaurants = {}
         self.finished = False
+        self.filename = csv_file_name
         self.read_csvfile(csv_file_name)
         
     def menu(self):
+        """Displays a menu and prompts the user for their choice"""
         print "1: Search based on distance"
         print "2: Search based on rating"
         print "3: Add a new entry"
@@ -29,6 +32,7 @@ class Restaurant:
     
     
     def search_on_distance(self,dist):
+        """Prints out all restaurants within a given distance"""
         for restaurant_name in self.restaurants.keys():
             rest_details = self.restaurants[restaurant_name]
             if int(rest_details["dist"]) <= int(dist):
@@ -37,6 +41,7 @@ class Restaurant:
         
 
     def search_on_rating(self,rating):
+        """Prints out all restaurants with a given rating or better"""
         for restaurant_name in restaurants.keys():
             rest_details = restaurants[restaurant_name]
             if int(rest_details["fave"]) >= int(rating):
@@ -45,6 +50,7 @@ class Restaurant:
 
 
     def add_restaurant(self):
+        """Prompts the user for a new restaurant to add to the database"""
         name = raw_input("Enter Restaurant Name: ")
         cuisine = raw_input("Enter Restaurant type: ")
         cost = raw_input("Enter Restaurant cost (out of 5): ")
@@ -55,6 +61,7 @@ class Restaurant:
 
 
     def save_changes(self,filename):
+        """Saves the current restaurant list to a CSV file"""
         with open(filename,"w") as csvfile:
             csv_writer = self.csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
             csv_writer.writeheader()
@@ -63,8 +70,8 @@ class Restaurant:
                 rest_details['name'] = restaurant_name
                 csv_writer.writerow(rest_details) 
 
-
     def read_csvfile(self,filename):
+        """Reads the restaurant list from a CSV file"""
         with open(filename) as csvfile:
             csv_reader = self.csv.DictReader(csvfile)
             for rest_details in csv_reader: 
@@ -73,14 +80,3 @@ class Restaurant:
                 self.restaurants[restaurant_name] = rest_details
 
 
-
-    def add_restaurant(self):
-        name = raw_input("Enter Restaurant Name: ")
-        cuisine = raw_input("Enter Restaurant type: ")
-        cost = raw_input("Enter Restaurant cost (out of 5): ")
-        fave = raw_input("Enter cost (out of 5): ")
-        dist = raw_input("Enter distance (minutes' walk): ")
-        self.restaurants[name] = {"name": name, "type": cuisine, 
-                            "cost": cost, "fave": fave, "dist": dist}
-
-    

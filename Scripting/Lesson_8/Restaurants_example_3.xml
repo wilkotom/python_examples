@@ -1,0 +1,16 @@
+<restaurants>
+  <restaurant>
+    <name value="Pret"/>
+    <type value="Sandwich"/>
+    <like value="2"/>
+    <cost value="2"/>
+    <dist value="1"/>
+  </restaurant>
+  <restaurant>
+    <name value="Brewhouse"/>
+    <type value="Pub"/>
+    <like value="3"/>
+    <cost value="3"/>
+    <distance value="2"/>
+  </restaurant>
+</restaurants>

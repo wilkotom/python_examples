@@ -1,0 +1,16 @@
+<restaurants>
+  <restaurant>
+    <name>Pret</name>
+    <type>Sandwich</type>
+    <like>2</like>
+    <cost>2</cost>
+    <dist>1</dist>
+  </restaurant>
+  <restaurant>
+    <name>Brewhouse</name>
+    <type>Pub</type>
+    <like>3</like>
+    <cost>3</cost>
+    <dist>2</dist>
+  </restaurant>
+</restaurants>

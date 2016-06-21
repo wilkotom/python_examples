@@ -1,0 +1,4 @@
+<Restaurants>
+  <Restaurant name="Pret" type="Sandwich" like="2" cost="2" dist="1" />
+  <Restaurant name="Brewhouse" type="Sandwich" like="3" cost="3" dist = "1" />
+</Restaurants>

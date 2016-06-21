@@ -1,0 +1,32 @@
+{
+  "Brewhouse":{
+    "cost":"2",
+    "dist":"1",
+    "fave":"3",
+    "type":"pub"
+  },
+  "Frederick's":{
+    "cost":"5",
+    "dist":"5",
+    "fave":"5",
+    "type":"british"
+  },
+  "Itsu":{
+    "cost":"3",
+    "dist":"4",
+    "fave":"2",
+    "type":"sushi"
+  },
+  "Jamie's":{
+    "cost":"3",
+    "dist":"1",
+    "fave":"1",
+    "type":"italian"
+  },
+  "pret":{
+    "cost":"1",
+    "dist":"2",
+    "fave":"2",
+    "type":"sandwich"
+  }
+}

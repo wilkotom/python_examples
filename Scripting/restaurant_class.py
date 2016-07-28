@@ -1,6 +1,6 @@
+import csv
+
 class Restaurant:    
-    import csv
-    import json
 
     def __init__(self, csv_file_name):
         self.restaurants = {}
@@ -63,7 +63,7 @@ class Restaurant:
     def save_changes(self,filename):
         """Saves the current restaurant list to a CSV file"""
         with open(filename,"w") as csvfile:
-            csv_writer = self.csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
+            csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
             csv_writer.writeheader()
             for restaurant_name in restaurants.keys():
                 rest_details = self.restaurants[restaurant_name]
@@ -73,7 +73,7 @@ class Restaurant:
     def read_csvfile(self,filename):
         """Reads the restaurant list from a CSV file"""
         with open(filename) as csvfile:
-            csv_reader = self.csv.DictReader(csvfile)
+            csv_reader = csv.DictReader(csvfile)
             for rest_details in csv_reader: 
                 restaurant_name = rest_details['name']
                 del rest_details['name']

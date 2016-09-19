@@ -42,7 +42,7 @@ def add_restaurant():
 
 
 def save_changes():
-    with open("restaurants-lesson8.csv","w") as csvfile:
+    with open("restaurants-lesson1.csv","w") as csvfile:
         csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
         for restaurant_name in restaurants.keys():

@@ -52,7 +52,7 @@ def save_changes():
 
 
 def read_csvfile():
-    with open("restaurants-lesson8.csv") as csvfile:
+    with open("restaurants-lesson1.csv") as csvfile:
         csv_reader = csv.DictReader(csvfile)
         for rest_details in csv_reader: 
             restaurant_name = rest_details['name']

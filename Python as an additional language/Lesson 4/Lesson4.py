@@ -29,7 +29,7 @@ def search_on_rating(rating):
               str(rest_details["dist"]) + " minutes from here"
 
 
-with open("restaurants-lesson8.csv") as csvfile:
+with open("restaurants-lesson4.csv") as csvfile:
     csv_reader = csv.DictReader(csvfile)
     for rest_details in csv_reader: 
         restaurant_name = rest_details['name']

@@ -3,6 +3,7 @@ import json
 
 
 class RestaurantCollection:
+    """Details of a collection of restaurants, plus various methods to query and update the collection"""
 
     class Restaurant:
         """Holds details of an individual place to eat"""

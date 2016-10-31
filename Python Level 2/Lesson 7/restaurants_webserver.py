@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+
+import web
+import shared
+
+urls = ( '/restaurants', 'Restaurants',
+         '/restaurant/(.*)', 'SpecificRestaurant',
+        '/', 'Index')
+
+class RestaurantJson:
+    def GET(self, name):
+        return restaurant_object.get_restaurant_json(name)
+
+class
+
+
+class Restaurants:
+    def GET(self):
+        print restaurants
+        web.header('Content-Type', 'text/plain')
+        return '\n'.join(restaurants.keys())
+
+class SpecificRestaurant:
+    def GET (self, name):
+        web.header('Content-Type', 'text/plain')
+        return str(restaurants[name])
+
+class Index:
+    def GET(self):
+        return "This is the index page"
+
+
+restaurants = shared.read_csvfile('restaurants-lesson7.csv')
+app = web.application(urls, globals())
+
+if __name__ == "__main__":
+    app.run()

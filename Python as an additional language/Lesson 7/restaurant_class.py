@@ -19,11 +19,11 @@ class RestaurantCollection:
                 self.name, self.type, self.cost, self.fave, self.dist)
 
 
-    def __init__(self, csv_file_name):
+    def __init__(self, file_name):
         self.restaurants = {}
-        self.read_jsonfile(csv_file_name)
+        self.read_jsonfile(file_name)
         self.finished = False
-        self.filename = csv_file_name
+        self.filename = file_name
 
     def get_restaurant_json(self, restaurant_name):
         return json.dumps(self.restaurants[restaurant_name])
@@ -31,7 +31,7 @@ class RestaurantCollection:
     def get_restaurants_by_score(self, score):
         places = []
         for place in self.restaurants.keys():
-            if int(self.restaurants[place]['fave']) == score:
+            if int(self.restaurants[place].fave) == score:
                 places.append(place)
         return json.dumps(places)
         
@@ -81,13 +81,6 @@ class RestaurantCollection:
         self.restaurants[name] = {"type": cuisine, "cost": cost,
                                   "fave": fave, "dist": dist}
 
-    def save_changes(self, filename):
-        """Saves the current restaurant list to a CSV file"""
-        filename = filename.replace('csv', 'json')
-        with open(filename, 'w') as jsonfile:
-            json.dump(self.restaurants, jsonfile, sort_keys=True,
-                      indent=2, separators=(',', ':'))
-
     def read_csvfile(self, filename):
         """Reads the restaurant list from a CSV file"""
         restaurants = {}
@@ -97,8 +90,8 @@ class RestaurantCollection:
                 restaurants[rest_details['name']] = self.Restaurant(**rest_details)
         return restaurants
 
-    def save_changes_as_json(self, filename):
-        """Saves the restaurant data as JSON"""
+    def save_csvfile(self, filename):
+        """Saves the restaurant data as CSV"""
         csv_writer = csv.DictWriter(filename, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
         for restaurant in self.restaurants.keys():
@@ -110,8 +103,12 @@ class RestaurantCollection:
             csv_writer.writerow(out_dict)
 
     def read_jsonfile(self, filename):
+        raw_restaurants = {}
         """Saves the restaurant data as JSON"""
         filename = filename.replace('csv', 'json')
         with open(filename, 'r') as jsonfile:
-            self.restaurants = json.load(jsonfile)
+            raw_restaurants = json.load(jsonfile)
+        for restaurant_name in raw_restaurants:
+            raw_restaurants[restaurant_name]["name"] = restaurant_name
+            self.restaurants[restaurant_name] = self.Restaurant(**raw_restaurants[restaurant_name])
 

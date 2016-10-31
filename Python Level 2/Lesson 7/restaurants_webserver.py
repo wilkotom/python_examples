@@ -5,7 +5,7 @@ import shared
 
 urls = ( '/restaurants', 'Restaurants',
          '/restaurant/(.*)', 'SpecificRestaurant',
-        '/', 'Index')
+         '/', 'Index')
 
 class Restaurants:
     def GET(self):

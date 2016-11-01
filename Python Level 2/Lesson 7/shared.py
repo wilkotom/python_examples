@@ -35,6 +35,13 @@ def read_csvfile(filename):
         csv_reader = csv.DictReader(csvfile)
         for rest_details in csv_reader:
             restaurants[rest_details['name']] = Restaurant(**rest_details)
+            # Because the column headers match the Restaurant properties' names, we can use **rest_details as shorthand
+            # We could alo write this as
+            # Restaurant(rest_details['name'],
+            #            rest_details['type'],
+            #            rest_details['cost'],
+            #            rest_details['fave'],
+            #            rest_details['dist'])
     return restaurants
 
 

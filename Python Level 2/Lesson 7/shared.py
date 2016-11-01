@@ -22,11 +22,7 @@ def save_changes(filename, restaurants):
         csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
         for name in restaurants.keys():
-            csv_writer.writerow({'type': restaurants[name].type,
-                                 'cost': restaurants[name].cost,
-                                 'fave': restaurants[name].fave,
-                                 'dist': restaurants[name].dist,
-                                 'name': name})
+            csv_writer.writerow(restaurants[name].as_dict())
 
 
 def read_csvfile(filename):
@@ -36,7 +32,7 @@ def read_csvfile(filename):
         for rest_details in csv_reader:
             restaurants[rest_details['name']] = Restaurant(**rest_details)
             # Because the column headers match the Restaurant properties' names, we can use **rest_details as shorthand
-            # We could alo write this as
+            # We could alo write this as:
             # Restaurant(rest_details['name'],
             #            rest_details['type'],
             #            rest_details['cost'],
@@ -58,6 +54,13 @@ class Restaurant:
     def __str__(self):
         return "{0} is a {1} place {4} minutes from here. Star rating {2}, Cost {3}".format(
             self.name, self.type, self.cost, self.fave, self.dist)
+
+    def as_dict(self):
+        return {'type': self.type,
+                'cost': self.cost,
+                'fave': self.fave,
+                'dist': self.dist,
+                'name': self}
 
 
 class Formal(Restaurant):

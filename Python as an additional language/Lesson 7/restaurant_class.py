@@ -19,6 +19,9 @@ class RestaurantCollection:
             return "{0} is a {1} place {4} minutes from here. Star rating {2}, Cost {3}".format(
                 self.name, self.type, self.cost, self.fave, self.dist)
 
+        def as_dict(self):
+            return {"name": self.name, "type": self.type, "cost": self.cost, "fave": self.fave, "dist": self.dist}
+
 
     def __init__(self, file_name):
         self.restaurants = {}
@@ -96,12 +99,7 @@ class RestaurantCollection:
         csv_writer = csv.DictWriter(filename, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
         for restaurant in self.restaurants.keys():
-            out_dict = {"name": self.restaurants[restaurant].name,
-                        "type": self.restaurants[restaurant].type,
-                        "cost": self.restaurants[restaurant].cost,
-                        "fave": self.restaurants[restaurant].fave,
-                        "dist": self.restaurants[restaurant].dist}
-            csv_writer.writerow(out_dict)
+            csv_writer.writerow(restaurant.as_dict())
 
     def read_jsonfile(self, filename):
         raw_restaurants = {}

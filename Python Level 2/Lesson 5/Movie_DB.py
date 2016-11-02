@@ -3,7 +3,7 @@
 import httplib
 import json
 
-arguments = '?api_key=544402b9715ad82e0f2e68051eee4dc6'
+arguments = '?api_key=XXXXXXXXXXXX'
 
 connection = httplib.HTTPSConnection('api.themoviedb.org')
 connection.request('GET', '/3/genre/movie/list'+ arguments)

@@ -5,12 +5,12 @@ from restaurant_class import RestaurantCollection
 
 restaurant_object = RestaurantCollection("restaurants-lesson7.csv")
 
-urls = ( '/restaurant/(.*)', 'RestaurantJson',
+urls = ( '/echo/(.*)', 'Echo',
         '/(.*)', 'Index')
 
-class RestaurantJson:
-    def GET(self, name):
-        return restaurant_object.get_restaurant_json(name)
+class Echo:
+    def GET (self, path):
+        return path
 
 class Index:
     def GET(self, path):

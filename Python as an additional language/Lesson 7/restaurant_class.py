@@ -29,8 +29,6 @@ class RestaurantCollection:
         self.finished = False
         self.filename = file_name
 
-    def get_restaurant_json(self, restaurant_name):
-        return json.dumps(self.restaurants[restaurant_name].as_dict())
 
 
     def menu(self):

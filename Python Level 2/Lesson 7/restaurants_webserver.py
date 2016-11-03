@@ -5,7 +5,16 @@ import shared
 
 urls = ( '/restaurants', 'Restaurants',
          '/restaurant/(.*)', 'SpecificRestaurant',
+         '/score/(**INSERT REGEX HERE **)', 'RestaurantsByScore',
          '/', 'Index')
+
+class RestaurantsByScore:
+    def GET (self, score):
+        score = int (score)
+        # List the restaurants with a particular score
+        return # Them
+
+        
 
 class Restaurants:
     def GET(self):

@@ -30,15 +30,9 @@ class RestaurantCollection:
         self.filename = file_name
 
     def get_restaurant_json(self, restaurant_name):
-        return json.dumps(self.restaurants[restaurant_name])
+        return json.dumps(self.restaurants[restaurant_name].as_dict())
 
-    def get_restaurants_by_score(self, score):
-        places = []
-        for place in self.restaurants.keys():
-            if int(self.restaurants[place].fave) == score:
-                places.append(place)
-        return json.dumps(places)
-        
+
     def menu(self):
         """Displays a menu and prompts the user for their choice"""
         print "1: Search based on distance"

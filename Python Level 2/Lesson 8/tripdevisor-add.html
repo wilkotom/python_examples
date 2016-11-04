@@ -1,0 +1,42 @@
+<html><head><title>TripDevisor</title>
+
+    <style>
+    body  {
+        font-family : Arial,sans-serif;
+        background-color: white;
+        color: black;
+	width: 80%;
+    }
+    h1 {
+        text-align: right;
+        color: yellow;
+        background-color: blue;
+	padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        background-color: yellow;
+	color: blue;
+	padding:10px;
+	
+    }
+
+    li {
+        list-style: none;
+    }
+
+</style></head><body>
+<h1>
+TripDevisor
+</h1>
+<h2>Add A Restaurant</h2>
+<form method="POST" action="/addRestaurant">
+    Name: <input type="text" name="name"><br/>
+    Type: <input type="text" name="type"><br/>
+    Rating (1-5): <input type="text" name="fave"><br/>
+    Cost (1-5): <input type="text" name="cost"><br/>
+    Distance (minutes' walk): <input type="text" name="dist"><br/>
+    <input type="submit" value="Submit">
+</form>
+</body>

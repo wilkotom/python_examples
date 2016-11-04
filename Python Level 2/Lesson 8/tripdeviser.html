@@ -1,5 +1,5 @@
 <html>
-<head><title>TripDevisor</title>
+<head><title>TripDeviser</title>
 
     <style>
     body  {
@@ -36,20 +36,15 @@
     }
 
     a:link {
-        color: black;
         text-decoration: none;
     }
 
     a:visited {
-        color: black;
         text-decoration: none;
     }
     a:hover {
-        color: black;
         text-decoration: underline;
     }
-
-
 
 
     </style>
@@ -62,7 +57,7 @@
     <a href="/addRestaurant">Add a restaurant?</a>
 
 
-    <h2>Add A Restaurant</h2>
+    <h2>{{PLACENAME}}</h2>
 </div>
 <div class="description">
     <!-- Super secret hidden extra exercise - generate a list of places  to eat automatically -->
@@ -81,14 +76,6 @@
         <li><a href="/tripdevisor/Jamie's">Jamie's</a></li>
         <li><a href="/tripdevisor/pret">pret</a></li>
     </ul>
-    <form method="POST" action="/addRestaurant">
-        Name: <input type="text" name="name"><br/>
-        Type: <input type="text" name="type"><br/>
-        Rating (1-5): <input type="text" name="fave"><br/>
-        Cost (1-5): <input type="text" name="cost"><br/>
-        Distance (minutes' walk): <input type="text" name="dist"><br/>
-        <input type="submit" value="Submit">
-    </form>
+    {{PLACEDESCRIPTION}}
 </div>
 </body>
-</html>

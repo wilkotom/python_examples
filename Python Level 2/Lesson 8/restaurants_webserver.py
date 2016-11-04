@@ -5,7 +5,7 @@ import shared
 
 urls = ( '/restaurants', 'Restaurants',
          '/restaurant/(.*)', 'SpecificRestaurant',
-         '/tripdevisor/(.*)', 'TripDevisor',
+         '/tripdeviser/(.*)', 'TripDeviser',
          '/addRestaurant','AddRestaurant',
          '/score/([0-5])', 'RestaurantsByScore',
          '/', 'Index')
@@ -21,7 +21,7 @@ class RestaurantsByScore:
                 print '{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave)
         return '\n'.join(sorted(matching_places))
 
-class TripDevisor:
+class TripDeviser:
     def GET (self, place):
         output_html = '' # A string, obviously
         # Add some code in here
@@ -29,7 +29,7 @@ class TripDevisor:
 
 class AddRestaurant:
     def GET (self):
-        with open("tripdevisor-add.html") as html_template:
+        with open("tripdeviser-add.html") as html_template:
             output = html_template.read()
         return output
 

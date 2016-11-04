@@ -1,0 +1,50 @@
+<html><head><title>TripDevisor</title>
+
+    <style>
+    body  {
+        font-family : Arial,sans-serif;
+        background-color: white;
+        color: black;
+	width: 80%;
+    }
+    h1 {
+        text-align: right;
+        color: yellow;
+        background-color: blue;
+	padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        background-color: yellow;
+	color: blue;
+	padding:10px;
+	
+    }
+
+    li {
+        list-style: none;
+    }
+
+</style></head><body>
+<h1>
+TripDevisor
+</h1>
+<!-- Super secret hidden extra exercise - add a list of places  to eat to the screen -->
+<!-- hint: replace all the hard-coded links here ( <li ... lines with a template like {{LIST}} -->
+<!-- then add a suitable HTML line generated from your data for each of your restaurants -->
+<!--
+<h3>
+Available places:
+</h3>
+<ul>
+	<li><a href="/tripdevisor/Bibigo">Bibigo</a></li>
+	<li><a href="/tripdevisor/Brewhouse">Brewhouse</a></li>
+	<li><a href="/tripdevisor/Frederick's">Frederick's</a></li>
+	<li><a href="/tripdevisor/Itsu">Itsu</a></li>
+	<li><a href="/tripdevisor/Jamie's">Jamie's</a></li>
+	<li><a href="/tripdevisor/pret">pret</a></li>
+</ul> -->
+<h2>{{PLACENAME}}</h2>
+{{PLACEDESCRIPTION}}
+</body>

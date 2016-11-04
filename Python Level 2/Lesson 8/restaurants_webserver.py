@@ -47,8 +47,5 @@ class Index:
 restaurants = shared.read_csvfile('restaurants-lesson8.csv')
 app = web.application(urls, globals())
 
-with open('tripdevisor.html') as trip_file:
-    trip_template = trip_file.read()
-
 if __name__ == "__main__":
     app.run()

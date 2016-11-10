@@ -12,7 +12,7 @@ urls = ( '/restaurants/(.*)', 'RestaurantJson',
 
 class RestaurantJson:
     def GET (self, name):
-        return json.dumps(restaurant_object[name].as_dict())
+        return json.dumps(restaurant_object.restaurants[name].as_dict())
 
 class RestaurantsByScore:
     def GET (self, score):

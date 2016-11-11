@@ -1,0 +1,80 @@
+<html>
+<head><title>TripDeviser</title>
+
+    <style>
+    body  {
+        font-family : Arial,sans-serif;
+        background-color: white;
+        color: black;
+	    max-width: 50em;
+		margin-left: auto ;
+        margin-right: auto ;
+    }
+
+    h1 {
+        text-align: right;
+    }
+    .header {
+        text-align: right;
+        color: #ffff1a;
+        background-color:  #0099ff;
+	    padding: 20px;
+	    margin: 0px;
+    }
+    .description {
+        margin: 20px;
+    }
+    h2 {
+        text-align: left;
+        background-color: #ffff1a;
+	color:  #0099ff;
+	padding:10px;
+	margin: 0px;
+
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a:link {
+        color: black;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        color: black;
+        text-decoration: underline;
+    }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>
+        TripDeviser
+    </h1>
+    <a href="/addRestaurant">Add a restaurant?</a>
+
+
+    <h2>{{PLACENAME}}</h2>
+</div>
+<div class="description">
+    <!-- Super secret hidden extra exercise - generate a list of places  to eat automatically -->
+    <!-- hint: replace all the hard-coded links here ( <li ... lines with a token like {{RESTLIST}} -->
+    <!-- then generate  a suitable HTML line  from your data for each of your restaurants -->
+    <!-- and substitute it in for {{RESTLIST}} -->
+
+    <h3>
+        Available places:
+    </h3>
+    <ul>
+{{RESTLIST}}
+    </ul>
+    {{PLACEDESCRIPTION}}
+</div>
+</body>

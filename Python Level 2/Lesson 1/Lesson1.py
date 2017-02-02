@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+
 import csv
 
 restaurants = {}
 
-finished = False
+keep_going = True
 
 
 def show_menu():
@@ -17,9 +18,8 @@ def show_menu():
 def search_on_distance(dist):
     for restaurant_name in restaurants.keys():
         rest_details = restaurants[restaurant_name]
-        if int(rest_details["dist"]) <= int(dist):
-            print restaurant_name + " is a " + rest_details["type"] + " place " + \
-             rest_details["dist"] + " minutes from here"
+        if int(restaurants[restaurant_name]["dist"]) <= int(dist):
+            print restaurant_name + " is a " + rest_details["type"] + " place " + rest_details["dist"] + " minutes from here"
       
 
 def search_on_rating(rating):
@@ -60,7 +60,7 @@ def read_csvfile():
 
 read_csvfile()
 
-while not finished:
+while keep_going:
     show_menu()
     choice = raw_input("Please enter choice: ")
     if choice == "1":
@@ -69,9 +69,8 @@ while not finished:
         search_on_rating(raw_input("Please enter minimum rating: "))
     elif choice == "3":
         add_restaurant()
-    elif choice == "4":
         save_changes()
     elif choice == "5":
-        finished = True
+        keep_going = False
     else:
         print "That's not a valid choice - try again!"

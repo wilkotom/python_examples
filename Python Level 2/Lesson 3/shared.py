@@ -21,7 +21,8 @@ def save_changes(restaurants):
         csv_writer.writeheader()
         for restaurant_name in restaurants.keys():
             rest_details = restaurants[restaurant_name]
-            rest_details['name'] = restaurant_name
+            rest_details['name'] = restaurant_name  #  This code needs to be updated to pull the data from a Restaurant
+                                                    #  object instead of a dictionary
             csv_writer.writerow(rest_details)
 
 
@@ -29,6 +30,22 @@ def read_csvfile(restaurants):
     with open("restaurants-lesson2.csv") as csvfile:
         csv_reader = csv.DictReader(csvfile)
         for rest_details in csv_reader:
-            restaurant_name = rest_details['name']
-            del rest_details['name']
-            restaurants[restaurant_name] = rest_details
+            restaurants[rest_details['name']] = Restaurant(rest_details['name'],
+                                                           rest_details['type'],
+                                                           rest_details['cost'],
+                                                           rest_details['fave'],
+                                                           rest_details['dist'])
+
+
+class Restaurant:
+    """Holds details of an individual place to eat"""
+    def __init__(self, name, type, cost, fave, dist):
+        self.name = name
+        self.type = type
+        self.cost = int(cost)  # This (and following lines) ensure that these values are numbers
+        self.fave = int(fave)  # If you have some extra time you might like to add better input validation here
+        self.dist = int(dist)  # What will happen if we create a Restaurant with a non-number in these fields?
+
+    def __str__(self):
+        return "{0} is a {1} place {4} minutes from here. Star rating {2}, Cost {3}".format(
+            self.name, self.type, self.cost, self.fave, self.dist)

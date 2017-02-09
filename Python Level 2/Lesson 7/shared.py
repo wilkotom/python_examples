@@ -60,7 +60,7 @@ class Restaurant:
                 'cost': self.cost,
                 'fave': self.fave,
                 'dist': self.dist,
-                'name': self}
+                'name': self.name}
 
 
 class Formal(Restaurant):

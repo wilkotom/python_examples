@@ -20,10 +20,11 @@ def save_changes(restaurants):
         csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
         for restaurant_name in restaurants.keys():
-            rest_details = restaurants[restaurant_name]
-            rest_details['name'] = restaurant_name  #  This code needs to be updated to pull the data from a Restaurant
-                                                    #  object instead of a dictionary
-            csv_writer.writerow(rest_details)
+            rest_object = restaurants[restaurant_name]
+            #  This code needs to be updated to pull the data from a Restaurant
+            #  object instead of a dictionary eg using rest_object.name, rest_object.type, etc
+            rest_object['name'] = restaurant_name  
+            csv_writer.writerow(rest_object)
 
 
 def read_csvfile(restaurants):

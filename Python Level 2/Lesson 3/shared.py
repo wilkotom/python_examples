@@ -16,7 +16,7 @@ def return_verified_value(min,max,value):
 
 
 def save_changes(restaurants):
-    with open("restaurants-lesson2.csv","w") as csvfile:
+    with open("restaurants-lesson3.csv","w") as csvfile:
         csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
         for restaurant_name in restaurants.keys():
@@ -28,7 +28,7 @@ def save_changes(restaurants):
 
 
 def read_csvfile(restaurants):
-    with open("restaurants-lesson2.csv") as csvfile:
+    with open("restaurants-lesson3.csv") as csvfile:
         csv_reader = csv.DictReader(csvfile)
         for rest_details in csv_reader:
             restaurants[rest_details['name']] = Restaurant(rest_details['name'],

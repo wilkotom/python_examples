@@ -37,8 +37,6 @@ class RestaurantCollection:
         self.finished = False
         self.filename = file_name
 
-
-
     def menu(self):
         """Displays a menu and prompts the user for their choice"""
         print "1: Search based on distance"
@@ -105,11 +103,16 @@ class RestaurantCollection:
             csv_writer.writerow(restaurant.as_dict())
 
     def read_jsonfile(self, filename):
-        raw_restaurants = {}
-        """Saves the restaurant data as JSON"""
+        """Reads the restaurant data from a JSON file"""
         with open(filename, 'r') as jsonfile:
             raw_restaurants = json.load(jsonfile)
-        for restaurant_name in raw_restaurants:
-            raw_restaurants[restaurant_name]["name"] = restaurant_name
-            self.restaurants[restaurant_name] = self.Restaurant(**raw_restaurants[restaurant_name])
+            for restaurant_name in raw_restaurants:
+                raw_restaurants[restaurant_name]["name"] = restaurant_name
+                self.restaurants[restaurant_name] = self.Restaurant(**raw_restaurants[restaurant_name])
 
+    def save_changes_as_json(self, filename):
+        output_object = {}
+        for place in self.restaurants.keys():
+            output_object[place] = self.restaurants[place].as_dict()
+        with open(filename, "w") as jsonfile:
+            json.dump(output_object, jsonfile)

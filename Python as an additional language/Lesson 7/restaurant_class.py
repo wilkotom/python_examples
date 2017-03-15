@@ -22,10 +22,18 @@ class RestaurantCollection:
         def as_dict(self):
             return {"name": self.name, "type": self.type, "cost": self.cost, "fave": self.fave, "dist": self.dist}
 
+    class FileFormatNotSupported(IOError):
+        pass
+
 
     def __init__(self, file_name):
         self.restaurants = {}
-        self.read_jsonfile(file_name)
+        if file_name.endswith('.csv'):
+            self.read_csvfile(file_name)
+        elif file_name.endswith('.json'):
+            self.read_jsonfile(file_name)
+        else:
+            raise self.FileFormatNotSupported("Can't handle the file format for " + file_name)
         self.finished = False
         self.filename = file_name
 
@@ -47,7 +55,10 @@ class RestaurantCollection:
         elif choice == "3":
             self.add_restaurant()
         elif choice == "4":
-            self.save_changes_as_json(self.filename)
+            if self.filename.endswith('.csv'):
+                self.save_csvfile(self.filename)
+            else: # If it's not CSV, it must be JSON as we only support those 2 formats
+                self.save_changes_as_json(self.filename)
         elif choice == "5":
             self.finished = True
         else:
@@ -96,7 +107,6 @@ class RestaurantCollection:
     def read_jsonfile(self, filename):
         raw_restaurants = {}
         """Saves the restaurant data as JSON"""
-        filename = filename.replace('csv', 'json')
         with open(filename, 'r') as jsonfile:
             raw_restaurants = json.load(jsonfile)
         for restaurant_name in raw_restaurants:

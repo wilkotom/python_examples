@@ -3,7 +3,7 @@
 import web
 from restaurant_class import RestaurantCollection
 
-restaurant_object = RestaurantCollection("restaurants-lesson7.csv")
+restaurant_object = RestaurantCollection("restaurants-lesson7.jsin")
 
 urls = ( '/echo/(.*)', 'Echo',
         '/(.*)', 'Index')

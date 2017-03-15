@@ -45,7 +45,7 @@ movies_data = get_object(movies_path)
 
 movies = movies_data['results']
 
-# Two ways to solved this - first way, using a dictionary with the budget as the key
+# Two ways to solve this - first way, using a dictionary with the budget as the key
 
 movie_budgets = {}
 
@@ -74,10 +74,9 @@ for (movie_title, details) in sorted(all_movie_details.items(), reverse=True, ke
     print u"{0}\t\t{1}".format(details['budget'], movie_title)
 
 
-# Second way (again) using an explicit function inteadt of an anonymous one
+# Second way (again) using an explicit function instead of an anonymous one
 
 def get_budget(details):
-    # details is a tuple consisting of (key, value) as pulled from the dictionary items() method
     return details[1]['budget']
 
 all_movie_details = {}

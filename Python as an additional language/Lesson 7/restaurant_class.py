@@ -23,7 +23,7 @@ class RestaurantCollection:
             return {"name": self.name, "type": self.type, "cost": self.cost, "fave": self.fave, "dist": self.dist}
 
     class FileFormatNotSupported(IOError):
-        pass
+        """The filename provided doesn't match one of the supported formats"""
 
 
     def __init__(self, file_name):

@@ -111,3 +111,10 @@ class RestaurantCollection:
                 matches.append(restaurant_name)
         return matches
 
+    def save_changes_as_json(self, filename):
+        output_object = {}
+        for place in self.restaurants.keys():
+            output_object[place] = self.restaurants[place].as_dict()
+        with open(filename, "w") as jsonfile:
+            json.dump(output_object, jsonfile)
+

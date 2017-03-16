@@ -38,6 +38,13 @@ def read_csvfile(filename):
             restaurants[rest_details['name']] = Restaurant(**rest_details)
     return restaurants
 
+def read_jsonfile(filename):
+    restaurants = {}
+    with open(filename) as jsonfile:
+        in_data = json.load(jsonfile)
+    print in_data
+ #   for restaurant in in_data:
+ #       restaurants[rest_details['name']] = Restaurant(rest_details['name'], rest_details['type'], rest_details['cost'],)
 
 
 class Restaurant:
@@ -50,8 +57,11 @@ class Restaurant:
         self.dist = dist
 
     def __str__(self):
-        return "{0} is a {1} place {4} minutes from here. Star rating {2}, Cost {3}".format(
+        return "{0} is a {1} place {4} minutes from here. Star rating {3}, Cost {2}".format(
             self.name, self.type, self.cost, self.fave, self.dist)
+
+    def as_dict(self):
+        return {"name": self.name, "type": self.type, "cost": self.cost, "like": self.fave, "dist": self.dist }
 
 
 class Formal(Restaurant):

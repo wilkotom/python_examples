@@ -52,7 +52,7 @@ class Restaurant:
         self.dist = dist
 
     def __str__(self):
-        return "{0} is a {1} place {4} minutes from here. Star rating {2}, Cost {3}".format(
+        return "{0} is a {1} place {4} minutes from here. Star rating {3}, Cost {2}".format(
             self.name, self.type, self.cost, self.fave, self.dist)
 
     def as_dict(self):

@@ -25,7 +25,6 @@ class RestaurantCollection:
     class FileFormatNotSupported(IOError):
         """The filename provided doesn't match one of the supported formats"""
 
-
     def __init__(self, file_name):
         self.restaurants = {}
         if file_name.endswith('.csv'):

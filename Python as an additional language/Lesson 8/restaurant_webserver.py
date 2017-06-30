@@ -2,7 +2,7 @@
 
 import web
 import json
-from restaurant_class import RestaurantCollection
+from restaurant_collection import RestaurantCollection
 
 restaurant_collection = RestaurantCollection("restaurants-lesson8.json")
 

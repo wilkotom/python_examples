@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import web
-from restaurant_class import RestaurantCollection
+from restaurant_collection import RestaurantCollection
 
 restaurant_collection = RestaurantCollection("restaurants-lesson7.json")
 

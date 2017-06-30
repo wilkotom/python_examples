@@ -39,7 +39,7 @@ class AddRestaurant:
         type = input_data.type
         # Add some code in here to add the input to the internal restaurants data
         # Then save it out (call the function to save the changes)
-        # Then send the HTML for the new restaurant back, like for TripDevisor above
+        # Then send the HTML for the new restaurant back, like for TripDeviser above
         return name, type
 
 class Restaurants:

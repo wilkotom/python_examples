@@ -18,7 +18,7 @@ def show_menu():
 def search_on_distance(dist):
     for restaurant_name in restaurants.keys():
         rest_details = restaurants[restaurant_name]
-        if int(restaurants[restaurant_name]["dist"]) <= int(dist):
+        if int(rest_details["dist"]) <= int(dist):
             print restaurant_name + " is a " + rest_details["type"] + " place " + rest_details["dist"] + " minutes from here"
       
 

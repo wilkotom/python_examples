@@ -34,7 +34,7 @@ def add_restaurant():
     name = raw_input("Enter Restaurant Name: ")
     cuisine = raw_input("Enter Restaurant type: ")
     cost = raw_input("Enter Restaurant cost (out of 5): ")
-    fave = raw_input("Enter cost (out of 5): ")
+    fave = raw_input("Enter rating (out of 5): ")
     dist = raw_input("Enter distance (minutes' walk): ")
     restaurants[name] = {"type": cuisine, "cost": cost, 
                          "fave": fave, "dist": dist}
@@ -69,6 +69,7 @@ while keep_going:
         search_on_rating(raw_input("Please enter minimum rating: "))
     elif choice == "3":
         add_restaurant()
+    elif choice == “4”:
         save_changes()
     elif choice == "5":
         keep_going = False

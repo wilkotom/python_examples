@@ -85,7 +85,7 @@ while keep_going:
         search_on_rating(raw_input("Please enter minimum rating: "))
     elif choice == "3":
         add_restaurant()
-    elif choice =="4":
+    elif choice == "4":
         save_changes()
     elif choice == "5":
         keep_going = False

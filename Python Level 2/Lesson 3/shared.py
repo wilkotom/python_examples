@@ -28,14 +28,17 @@ def save_changes(restaurants):
 
 
 def read_csvfile(restaurants):
-    with open("restaurants-lesson3.csv") as csvfile:
-        csv_reader = csv.DictReader(csvfile)
-        for rest_details in csv_reader:
-            restaurants[rest_details['name']] = Restaurant(rest_details['name'],
-                                                           rest_details['type'],
-                                                           rest_details['cost'],
-                                                           rest_details['fave'],
-                                                           rest_details['dist'])
+    try:
+        with open("restaurants-lesson3.csv") as csvfile:
+            csv_reader = csv.DictReader(csvfile)
+            for rest_details in csv_reader:
+                restaurants[rest_details['name']] = Restaurant(rest_details['name'],
+                                                               rest_details['type'],
+                                                               rest_details['cost'],
+                                                               rest_details['fave'],
+                                                               rest_details['dist'])
+    except IOError:
+        pass
 
 
 class Restaurant:

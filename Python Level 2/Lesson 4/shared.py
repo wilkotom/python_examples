@@ -18,7 +18,7 @@ def return_verified_value(min, max, value):
     return value
 
 
-def save_changes(filename, restaurants):
+def save_changes(restaurants, filename):
     with open(filename, "w") as csvfile:
         csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'type', 'cost', 'fave', 'dist'])
         csv_writer.writeheader()
@@ -30,21 +30,24 @@ def save_changes(filename, restaurants):
                                  'name': name})
 
 
-def read_csvfile(filename):
-    restaurants = {}
-    with open(filename) as csvfile:
-        csv_reader = csv.DictReader(csvfile)
-        for rest_details in csv_reader:
-            restaurants[rest_details['name']] = Restaurant(**rest_details)
-    return restaurants
+def read_csvfile(restaurants, filename):
+    try:
+        with open(filename) as csvfile:
+            csv_reader = csv.DictReader(csvfile)
+            for rest_details in csv_reader:
+                restaurants[rest_details['name']] = Restaurant(**rest_details)
+    except IOError:
+        pass
+
 
 def read_jsonfile(filename):
-    restaurants = {}
-    with open(filename) as jsonfile:
-        in_data = json.load(jsonfile)
-    print in_data
- #   for restaurant in in_data:
- #       restaurants[rest_details['name']] = Restaurant(rest_details['name'], rest_details['type'], rest_details['cost'],)
+    try:
+        with open(filename) as jsonfile:
+            in_data = json.load(jsonfile)
+        print in_data
+    except IOError:
+        pass
+
 
 
 class Restaurant:

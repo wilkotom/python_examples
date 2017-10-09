@@ -1,12 +1,13 @@
 import csv
 
+
 def return_verified_value(min,max,value):
     """Returns an integer between two values.
     Arguments in order: min, max, value to check"""
     verified = False
     while verified is False:
         try:
-            if int(value) >= min and int(value) <= max:
+            if (int(value) >= min) and (int(value) <= max):
                 verified = True
         except ValueError:
             pass

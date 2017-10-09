@@ -25,12 +25,13 @@ def search_on_distance(dist):
       
 
 def search_on_rating(rating):
-    score = shared.return_verified_value(1,5,rating)
+    score = shared.return_verified_value(1, 5, rating)
     for restaurant_name in restaurants.keys():
         rest_details = restaurants[restaurant_name]
         if int(rest_details["fave"]) >= int(score):
             print restaurant_name + " is a " + rest_details["fave"] + "/5 rated place " + \
               str(rest_details["dist"]) + " minutes from here"
+
 
 def add_restaurant():
     name = raw_input("Enter Restaurant Name: ")

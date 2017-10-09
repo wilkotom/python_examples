@@ -71,7 +71,7 @@ def read_csvfile():
                 del rest_details['name']
                 restaurants[restaurant_name] = rest_details
     except IOError:
-        pass # Do nothing, we'll create the file the first time the user tries to save the data
+        pass  # Do nothing, we'll create the file the first time the user tries to save the data
 
 
 read_csvfile()

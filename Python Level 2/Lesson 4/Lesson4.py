@@ -6,6 +6,7 @@ filename = 'restaurants-lesson4.csv'
 
 finished = False
 
+restaurants = {}
 
 def show_menu():
     print "1: Search based on distance"
@@ -41,9 +42,9 @@ def add_restaurant():
     restaurants[name] = shared.Restaurant(name, cuisine, cost, fave, dist)
 
 
+shared.read_csvfile(restaurants, filename)
 
-restaurants = shared.read_csvfile(filename)
-
+print restaurants
 while not finished:
     show_menu()
     choice = raw_input("Please enter choice: ")
@@ -54,7 +55,7 @@ while not finished:
     elif choice == "3":
         add_restaurant()
     elif choice == "4":
-        shared.save_changes(filename,restaurants)
+        shared.save_changes(restaurants, filename)
     elif choice == "5":
         finished = True
     else:

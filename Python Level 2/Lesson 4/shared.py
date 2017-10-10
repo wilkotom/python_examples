@@ -47,6 +47,8 @@ def read_jsonfile(filename):
         print in_data
     except IOError:
         pass
+    except ValueError:
+        print "Warning: Could not load data - {0} isn't a valid JSON file".format(filename)
 
 
 

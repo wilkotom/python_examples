@@ -24,8 +24,8 @@ class TestRedaction(unittest.TestCase):
                                 "Though I hear of a storm due to hit us later")
 
     def test_substring(self):
-        self.assertEqual(redact("Flamingoland was my favourite theme park growing up", ['flamingo', 'eagle']),
-                         "Flamingoland was my favourite theme park growing up")
+        self.assertEqual(redact("Flamingoland was my local theme park growing up", ['flamingo', 'eagle']),
+                         "Flamingoland was my local theme park growing up")
 
     def test_empty_sentence(self):
         self.assertEqual(redact("", ['flamingo', 'eagle']), "")

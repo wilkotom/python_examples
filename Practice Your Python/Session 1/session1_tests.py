@@ -33,5 +33,5 @@ class TestRedaction(unittest.TestCase):
     def test_empty_input(self):
         self.assertEqual(redact('', []), '')
 
-if __name__ == '__main__':
-    unittest.main()
+suite = unittest.TestLoader().loadTestsFromTestCase(TestRedaction)
+unittest.TextTestRunner(verbosity=2).run(suite)

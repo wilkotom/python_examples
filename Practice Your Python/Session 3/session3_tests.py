@@ -1,5 +1,5 @@
 import unittest
-from session3_answers import decode
+from session3 import decode
 
 
 class TestPreT9Decoder(unittest.TestCase):
@@ -9,7 +9,7 @@ class TestPreT9Decoder(unittest.TestCase):
     def test_sos(self):
         self.assertEqual(decode('77776667777'), 'SOS')
 
-    def test_mistaken_keypress(self):
+    def test_mistaken_keypresses(self):
         self.assertEqual(decode('222220002'), 'A A')
 
     def test_number(self):

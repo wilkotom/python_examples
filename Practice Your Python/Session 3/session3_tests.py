@@ -37,6 +37,9 @@ class TestPreT9Decoder(unittest.TestCase):
     def test_long_pause(self):
         self.assertEqual(decode('555666   66407288       777733'), 'LONG PAUSE')
 
+    def test_pause_before_starting(self):
+        self.assertEqual(decode('   728877773302233 3336667773307777827778444664'),'PAUSE BEFORE STARTING')
+
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestPreT9Decoder)
 unittest.TextTestRunner(verbosity=2).run(suite)

@@ -4,7 +4,7 @@ from session4 import palindrome
 
 class TestPalindromeVerification(unittest.TestCase):
     def test_empty(self):
-        self.assertTrue(palindrome(''))
+        self.assertFalse(palindrome(''))
 
     def test_oxo(self):
         self.assertTrue(palindrome('oxo'))

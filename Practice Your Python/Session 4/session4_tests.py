@@ -27,8 +27,8 @@ class TestPalindromeVerification(unittest.TestCase):
     def test_emoji(self):
         self.assertIs(palindrome('(-)_(-)'), False)
 
-    def test_punctuation(self):
-        self.assertIs(palindrome('|.|.|'), False)
+    def test_inverted_smiley(self):
+        self.assertIs(palindrome('|_^_|'), False)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestPalindromeVerification)
 unittest.TextTestRunner(verbosity=2).run(suite)

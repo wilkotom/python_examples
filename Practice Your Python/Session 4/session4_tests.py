@@ -25,7 +25,7 @@ class TestPalindromeVerification(unittest.TestCase):
         self.assertIs(palindrome('\n1001 = 1001'),True)
 
     def test_emoji(self):
-        self.assertIs(palindrome('(-)_(-)'), False)
+        self.assertIs(palindrome('(.)_(.)'), False)
 
     def test_inverted_smiley(self):
         self.assertIs(palindrome('|_^_|'), False)

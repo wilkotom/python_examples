@@ -5,14 +5,4 @@ letter_score = {"a": 1, "b": 3, "c": 3, "d": 2, "e": 1,"f": 4,
                 "y": 4, "z": 10}
 
 def scrabble_score(played):
-    words = []
-    bonus = 0
-    with open('words.txt') as wordlist:
-        for word in wordlist:
-            words.append(word.strip())
-    if len(played) == 7:
-        bonus = 50
-    return bonus + sum(
-        [letter_score[x] for x in played.lower()]
-    ) if played.lower() in words and len(played) < 8 \
-        else 0
+    return None

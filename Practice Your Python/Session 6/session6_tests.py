@@ -5,7 +5,7 @@ from session6 import validate_grid
 
 class TestSudokuGrid(unittest.TestCase):
     def test_empty(self):
-        self.assertIs(validate_grid([]),False)
+        self.assertIs(validate_grid([]), False)
 
     def test_empty_grid(self):
         self.assertIs(validate_grid([([' '] * 9)] * 9), True)
@@ -42,6 +42,7 @@ class TestSudokuGrid(unittest.TestCase):
                                      [' ', ' ', 4, 9, 7, ' ', 3, ' ', 2],
                                      [' ', ' ', 6, ' ', ' ', 2, 9, ' ', ' '],
                                      [2, 7, 9, ' ', ' ', 5, ' ', ' ', 6]]), True)
+
     def test_bad_complete(self):
         self.assertIs(validate_grid([[1, 2, 3, 4, 5, 6, 7, 8, 9],
                                      [2, 3, 4, 5, 6, 7, 8, 9, 1],
@@ -51,7 +52,8 @@ class TestSudokuGrid(unittest.TestCase):
                                      [6, 7, 8, 9, 1, 2, 3, 4, 5],
                                      [7, 8, 9, 1, 2, 3, 4, 5, 6],
                                      [8, 9, 1, 2, 3, 4, 5, 6, 7],
-                                     [9, 1, 2, 3, 4, 5, 6, 7, 8]]),False)
+                                     [9, 1, 2, 3, 4, 5, 6, 7, 8]]), False)
+
     def test_bad_incomplete(self):
         self.assertIs(validate_grid([[6, ' ', ' ', 5, ' ', ' ', 4, 8, 7],
                                      [' ', ' ', 3, 6, ' ', ' ', 1, ' ', ' '],
@@ -64,7 +66,7 @@ class TestSudokuGrid(unittest.TestCase):
                                      [2, 7, 9, ' ', ' ', 5, ' ', ' ', 6]]), False)
 
     def test_all_ones(self):
-        self.assertIs(validate_grid([[1] *9] *9), False)
+        self.assertIs(validate_grid([[1] * 9] * 9), False)
 
     def test_not_a_square(self):
         self.assertIs(validate_grid([[1, 2, 3, 4, 5, 6, 7, 8, 9, 4],
@@ -76,6 +78,16 @@ class TestSudokuGrid(unittest.TestCase):
                                      [3, 4, 5, 6, 7, 8, 9, 1, 2],
                                      [6, 7, 8, 9, 1, 2, 3, 4, 5],
                                      [9, 1, 2, 3, 4, 5, 6, 7, 8]]), False)
+    def test_strings(self):
+        self.assertIs(validate_grid(['61  9    ',
+                                     '   2 1673',
+                                     '    4  9 ',
+                                     ' 2    5  ',
+                                     '7 51 83 9',
+                                     '  3    1 ',
+                                     ' 6  5    ',
+                                     '5798 2   ',
+                                     '    6  51']), True)
 
     def test_emoji_grid(self):
         self.assertIs(validate_grid([['😁', '🙈', '😴', '😍', '😎', '😭', '😩', '😇', '😂'],
@@ -98,6 +110,18 @@ class TestSudokuGrid(unittest.TestCase):
                                      [' ', ' ', ' ', ' ', ' ', '八', ' ', ' ', ' '],
                                      [' ', '八', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
                                      ['九', ' ', ' ', ' ', ' ', '六', ' ', ' ', ' ']]), True)
+
+    def test_japanese_strings(self):
+        self.assertIs(validate_grid([u'四九二八  七五 ',
+                                     u'    四一  九',
+                                     u'  七 二   八',
+                                     u'   九 二  七',
+                                     u'         ',
+                                     u'八  六 五   ',
+                                     u'九   八 一  ',
+                                     u'二  三九    ',
+                                     u' 三四  六九八二']), True)
+
 
 
 

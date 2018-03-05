@@ -54,6 +54,20 @@ class TestSudokuGrid(unittest.TestCase):
                                      [8, 9, 1, 2, 3, 4, 5, 6, 7],
                                      [9, 1, 2, 3, 4, 5, 6, 7, 8]]), False)
 
+    def test_bad_columns(self):
+        self.assertIs(validate_grid([[1, 2, 3, 4, 5, 6, 7, 8, 9] * 9]), False)
+
+    def test_bad_rows(self):
+        self.assertIs(validate_grid([[1] * 9,
+                                     [2] * 9,
+                                     [3] * 9,
+                                     [4] * 9,
+                                     [5] * 9,
+                                     [6] * 9,
+                                     [7] * 9,
+                                     [8] * 9,
+                                     [9] * 9]), False)
+
     def test_bad_incomplete(self):
         self.assertIs(validate_grid([[6, ' ', ' ', 5, ' ', ' ', 4, 8, 7],
                                      [' ', ' ', 3, 6, ' ', ' ', 1, ' ', ' '],
@@ -78,6 +92,7 @@ class TestSudokuGrid(unittest.TestCase):
                                      [3, 4, 5, 6, 7, 8, 9, 1, 2],
                                      [6, 7, 8, 9, 1, 2, 3, 4, 5],
                                      [9, 1, 2, 3, 4, 5, 6, 7, 8]]), False)
+
     def test_strings(self):
         self.assertIs(validate_grid(['61  9    ',
                                      '   2 1673',
@@ -121,8 +136,6 @@ class TestSudokuGrid(unittest.TestCase):
                                      u'九   八 一  ',
                                      u'二  三九    ',
                                      u' 三四  六九八二']), True)
-
-
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestSudokuGrid)

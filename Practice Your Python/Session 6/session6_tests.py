@@ -75,8 +75,8 @@ class TestSudokuGrid(unittest.TestCase):
         self.assertIs(validate_grid([[1] * 9] * 9), False)
 
     def test_not_a_square(self):
-        self.assertIs(validate_grid([[1, 2, 3, 4, 5, 6, 7, 8, 9, 4],
-                                     [5, 6, 7, 8, 9, 1, 2, 3],
+        self.assertIs(validate_grid([[1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+                                     [4, 5, 6, 7, 8, 9, 1, 2, 3],
                                      [7, 8, 9, 1, 2, 3, 4, 5, 6],
                                      [2, 3, 4, 5, 6, 7, 8, 9, 1],
                                      [5, 6, 7, 8, 9, 1, 2, 3, 4],
@@ -132,3 +132,8 @@ class TestSudokuGrid(unittest.TestCase):
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestSudokuGrid)
 unittest.TextTestRunner(verbosity=2).run(suite)
+
+
+not_a_square = [[1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F',0],
+                [4,5,6,7,8,9,'A','B','C','D',1,2,3],
+                ]

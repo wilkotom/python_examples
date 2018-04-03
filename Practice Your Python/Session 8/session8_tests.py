@@ -3,13 +3,13 @@ from session8 import reachable_destination
 
 
 class TestValidRoutes(unittest.TestCase):
-    def test_nowhere_to_nowhere(self):
+    def test_nowhere_nowhere(self):
         self.assertIs(reachable_destination('',''), False)
 
-    def test_heathrow_to_nowhere(self):
+    def test_heathrow_nowhere(self):
         self.assertIs(reachable_destination('LHR', ''), False)
 
-    def test_nowhere_to_leningrad(self):
+    def test_nowhere_leningrad(self):
         self.assertIs(reachable_destination('', 'LED'), False)
 
     def test_gatwick_leningrad(self):
@@ -32,6 +32,7 @@ class TestValidRoutes(unittest.TestCase):
 
     def test_leedsbradford_lunargrad(self):
         self.assertIs(reachable_destination('LBA', 'LRX'), False)
+
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestValidRoutes)
 unittest.TextTestRunner(verbosity=2).run(suite)

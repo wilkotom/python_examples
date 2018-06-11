@@ -1,3 +1,5 @@
+# This exercise uses the following encoding: utf-8
+
 import unittest
 from session4 import palindrome
 
@@ -13,7 +15,7 @@ class TestPalindromeVerification(unittest.TestCase):
         self.assertTrue(palindrome('A Man, A Plan, a Canal: Panama!'))
 
     def test_elba(self):
-        self.assertTrue(palindrome("Able was I, ere I saw Elba"))
+        self.assertTrue(palindrome("Able was I, ere I saw Elba 😁"))
 
     def test_seven(self):
         self.assertIs(palindrome('seven'), False)

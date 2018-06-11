@@ -1,17 +1,16 @@
-valid_routes = {
-    "ALC": ["CDG", "LHR", "LGW"],  # Planes depart ALC for CDG, LHR and LGW airports
-    "LHR": [],
-    "LGW": ["ALC", "LED", "CDG"],
-    "LED": ["MAN", "ALC"],
-    "MAN": ["CDG"],
-    "CDG": ["MAN", "LGW"],
-    "LRX": ["LGW", "ALC"],
-    "STD": ["YYZ"],
-    "YYZ": ["STD"],
-    "SEA": ["LRX"]
-
-}
-
-
 def reachable_destination(origin, destination):
+    valid_routes = {
+        "ALC": ["CDG", "LHR", "LGW", "JFK"],  # Planes depart ALC for CDG, LHR and LGW airports
+        "CDG": ["MAN", "LGW"],
+        "JFK": ["SEA"],
+        "LED": ["MAN", "ALC"],
+        "LGW": ["ALC", "LED", "CDG"],
+        "LHR": [],
+        "LRX": ["LGW", "ALC"],
+        "MAN": ["CDG"],
+        "SEA": ["LRX"],
+        "STD": ["YYZ"],
+        "YYZ": ["STD"]
+    }
+
     return None

@@ -74,6 +74,18 @@ class TestSudokuGrid(unittest.TestCase):
     def test_all_ones(self):
         self.assertIs(validate_grid([[1] * 9] * 9), False)
 
+
+    def test_test_too_many_symbols(self):
+        self.assertIs(validate_grid(['123 56789',
+                                     '4😁6789123',
+                                     '78  234 6',
+                                     '234567   ',
+                                     '5 78😩1234',
+                                     '891234567',
+                                     ' 4567891 ',
+                                     '67 9123😍5',
+                                     '9 23 5678']), False)
+
     def test_not_a_square(self):
         self.assertIs(validate_grid([[1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
                                      [4, 5, 6, 7, 8, 9, 1, 2, 3],

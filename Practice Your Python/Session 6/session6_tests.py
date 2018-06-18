@@ -74,7 +74,6 @@ class TestSudokuGrid(unittest.TestCase):
     def test_all_ones(self):
         self.assertIs(validate_grid([[1] * 9] * 9), False)
 
-
     def test_test_too_many_symbols(self):
         self.assertIs(validate_grid(['123 56789',
                                      '4😁6789123',

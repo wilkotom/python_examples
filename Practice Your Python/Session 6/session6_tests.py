@@ -132,8 +132,3 @@ class TestSudokuGrid(unittest.TestCase):
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestSudokuGrid)
 unittest.TextTestRunner(verbosity=2).run(suite)
-
-
-not_a_square = [[1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F',0],
-                [4,5,6,7,8,9,'A','B','C','D',1,2,3],
-                ]

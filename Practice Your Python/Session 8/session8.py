@@ -6,9 +6,9 @@ def reachable_destination(origin, destination):
         "LED": ["MAN", "ALC"],
         "LGW": ["ALC", "LED", "CDG"],
         "LHR": [],
-        "LRX": ["LGW", "ALC"],
+        "LC7": ["LGW", "ALC"],
         "MAN": ["CDG"],
-        "SEA": ["LRX"],
+        "SEA": ["LC7"],
         "STD": ["YYZ"],
         "YYZ": ["STD"]
     }

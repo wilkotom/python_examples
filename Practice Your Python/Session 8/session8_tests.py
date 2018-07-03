@@ -28,16 +28,16 @@ class TestValidRoutes(unittest.TestCase):
         self.assertIs(reachable_destination('YYZ','LED'), False)
 
     def test_heathrow_lunarcity7(self):
-        self.assertIs(reachable_destination('LHR', 'LRX'), False)
+        self.assertIs(reachable_destination('LHR', 'LC7'), False)
 
     def test_leedsbradford_lunarcity7(self):
-        self.assertIs(reachable_destination('LBA', 'LRX'), False)
+        self.assertIs(reachable_destination('LBA', 'LC7'), False)
 
     def test_seattle_manchester(self):
         self.assertIs(reachable_destination('SEA', 'MAN'), True)
 
     def test_manchester_lunarcity7(self):
-        self.assertIs(reachable_destination('MAN','LRX'), True)
+        self.assertIs(reachable_destination('MAN','LC7'), True)
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestValidRoutes)

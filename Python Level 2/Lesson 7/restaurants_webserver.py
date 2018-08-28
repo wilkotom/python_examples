@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import web
 import shared
 
 urls = ( '/restaurants', 'Restaurants',
          '/restaurant/(.*)', 'SpecificRestaurant',
-         '/score/(**INSERT REGEX HERE **)', 'RestaurantsByScore',
+         '/score/([1-5])', 'RestaurantsByScore',
          '/', 'Index')
 
 class RestaurantsByScore:
@@ -18,7 +18,7 @@ class RestaurantsByScore:
 
 class Restaurants:
     def GET(self):
-        print restaurants
+        print(restaurants)
         web.header('Content-Type', 'text/plain')
         return '\n'.join(restaurants.keys())
 

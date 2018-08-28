@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import web
 import shared
@@ -18,7 +18,7 @@ class RestaurantsByScore:
             if int(restaurants[restaurant_name].fave) == score:
                 matching_places.append(restaurant_name)
             else:
-                print '{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave)
+                print('{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave))
         return '\n'.join(sorted(matching_places))
 
 class TripDeviser:
@@ -36,15 +36,15 @@ class AddRestaurant:
     def POST(self):
         input_data = web.input()
         name = input_data.name
-        type = input_data.type
+        cuisine = input_data.type
         # Add some code in here to add the input to the internal restaurants data
         # Then save it out (call the function to save the changes)
         # Then send the HTML for the new restaurant back, like for TripDeviser above
-        return name, type
+        return name, cuisine
 
 class Restaurants:
     def GET(self):
-        print restaurants
+        print(restaurants)
         web.header('Content-Type', 'text/plain')
         return '\n'.join(sorted(restaurants.keys()))
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import web
 import shared
@@ -18,7 +18,7 @@ class RestaurantsByScore:
             if int(restaurants[restaurant_name].fave) == score:
                 matching_places.append(restaurant_name)
             else:
-                print '{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave)
+                print('{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave))
         return '\n'.join(sorted(matching_places))
 
 class TripDeviser:
@@ -27,7 +27,7 @@ class TripDeviser:
 
 
 class AddRestaurant:
-    def GET (self):
+    def GET(self):
         with open("tripdeviser-add.html") as html_template:
             output_html = html_template.read()
         output_html = output_html.replace('{{RESTLIST}}', generate_html_rest_list())
@@ -43,14 +43,14 @@ class AddRestaurant:
         cost = input_data.cost
         fave = input_data.fave
         dist = input_data.dist
-        restaurants[name] = shared.Restaurant(name,type,cost,fave,dist)
+        restaurants[name] = shared.Restaurant(name, type, cost, fave, dist)
         shared.save_changes(filename,restaurants)
         return generate_response(name)
 
 
 class Restaurants:
     def GET(self):
-        print restaurants
+        print(restaurants)
         web.header('Content-Type', 'text/plain')
         return '\n'.join(sorted(restaurants.keys()))
 

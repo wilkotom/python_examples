@@ -11,7 +11,7 @@ def return_verified_value(min,max,value):
         except ValueError:
             pass
         if verified is False:
-            value = raw_input("Please enter a number between {0} and {1}:".format(min,max))
+            value = input("Please enter a number between {0} and {1}:".format(min,max))
     return value  #
 
 

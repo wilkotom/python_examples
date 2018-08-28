@@ -13,7 +13,7 @@ def return_verified_value(min, max, value):
         except ValueError:
             verified_value = None
         if verified_value is None:
-            value = raw_input('Please enter a value between {0} and {1}'.format(min, max))
+            value = input('Please enter a value between {0} and {1}'.format(min, max))
     return value
 
 
@@ -66,13 +66,13 @@ class Restaurant:
 class Formal(Restaurant):
     """Restaurants which require a reservation and have a dress code"""
     def make_reservation(self):
-        print "In the future we'll implement this function."
-        print "It'll attempt to make a reservation at {0}".format(self.name)
+        print("In the future we'll implement this function.")
+        print("It'll attempt to make a reservation at {0}".format(self.name))
 
 
 class FastCasual(Restaurant):
     """Restaurants which don't accept reservations"""
     def request_delivery(self):
-        print "In the future we'll implement this function."
-        print "It'll request delivery from {0}".format(self.name)
+        print("In the future we'll implement this function.")
+        print("It'll request delivery from {0}".format(self.name))
 

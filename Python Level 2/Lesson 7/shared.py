@@ -42,7 +42,7 @@ def read_csvfile(filename):
 
 
 
-class Restaurant:
+class Restaurant(object):
     """Holds details of an individual place to eat"""
     def __init__(self, name, type, cost, fave, dist):
         self.name = name

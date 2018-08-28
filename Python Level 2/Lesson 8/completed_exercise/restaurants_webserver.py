@@ -10,7 +10,7 @@ urls = ( '/restaurants', 'Restaurants',
          '/score/([0-5])', 'RestaurantsByScore',
          '/', 'Index')
 
-class RestaurantsByScore:
+class RestaurantsByScore(object):
     def GET (self, score):
         score = int(score)
         matching_places = []
@@ -21,12 +21,12 @@ class RestaurantsByScore:
                 print('{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave))
         return '\n'.join(sorted(matching_places))
 
-class TripDeviser:
+class TripDeviser(object):
     def GET (self, place):
         return generate_response(place)
 
 
-class AddRestaurant:
+class AddRestaurant(object):
     def GET(self):
         with open("tripdeviser-add.html") as html_template:
             output_html = html_template.read()
@@ -48,20 +48,20 @@ class AddRestaurant:
         return generate_response(name)
 
 
-class Restaurants:
+class Restaurants(object):
     def GET(self):
         print(restaurants)
         web.header('Content-Type', 'text/plain')
         return '\n'.join(sorted(restaurants.keys()))
 
 
-class SpecificRestaurant:
+class SpecificRestaurant(object):
     def GET (self, name):
         web.header('Content-Type', 'text/plain')
         return str(restaurants[name])
 
 
-class Index:
+class Index(object):
     def GET(self):
         return "This is the index page"
 

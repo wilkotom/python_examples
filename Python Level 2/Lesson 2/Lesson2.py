@@ -15,7 +15,7 @@ def show_menu():
     
     
 def search_on_distance(dist):
-    for restaurant_name in restaurants.keys):
+    for restaurant_name in restaurants.keys():
         rest_details = restaurants[restaurant_name]
         if int(rest_details["dist"]) <= int(dist):
             print(restaurant_name + " is a " + rest_details["type"] + " place " + \
@@ -23,14 +23,14 @@ def search_on_distance(dist):
       
 
 def search_on_rating(rating):
-    score = return_verified_value(rating)
+    score = return_verified_value(1,5,rating)
     for restaurant_name in restaurants.keys():
         rest_details = restaurants[restaurant_name]
         if int(rest_details["fave"]) >= score:
-            print(restaurant_name + " is a " + rest_details["fave"] + "/5 rated place " + \
-              str(rest_details["dist"]) + " minutes from here")
+            print("{} is a {}/5 rated place {} minutes from here").format(restaurant_name,
+                                                                          rest_details["fave"],
+                                                                          rest_details["dist"])
 
-    
 
 def return_verified_value(min,max,value):
     """Returns an integer between two values.
@@ -42,7 +42,7 @@ def add_restaurant():
     name = input("Enter Restaurant Name: ")
     cuisine = input("Enter Restaurant type: ")
     cost = input("Enter Restaurant cost (out of 5): ")
-    fave = input("Enter cost (out of 5): ")
+    fave = input("Enter star rating (out of 5): ")
     dist = input("Enter distance (minutes' walk): ")
     restaurants[name] = {"type": cuisine, "cost": cost, 
                          "fave": fave, "dist": dist}

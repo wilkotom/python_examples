@@ -46,7 +46,7 @@ def add_restaurant():
     name = input("Enter Restaurant Name: ")
     cuisine = input("Enter Restaurant type: ")
     cost = input("Enter Restaurant cost (out of 5): ")
-    fave = input("Enter cost (out of 5): ")
+    fave = input("Enter star rating (out of 5): ")
     dist = input("Enter distance (minutes' walk): ")
     restaurants[name] = {"type": cuisine, "cost": cost,
                          "fave": fave, "dist": dist}
@@ -91,3 +91,5 @@ while keep_going:
         keep_going = False
     else:
         print("That's not a valid choice - try again!")
+
+

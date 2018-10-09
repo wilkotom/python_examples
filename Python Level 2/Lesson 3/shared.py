@@ -1,6 +1,6 @@
 import csv
 
-def return_verified_value(min,max,value):
+def return_verified_value(min, max, value):
     """Returns an integer between two values.
     Arguments in order: min, max, value to check"""
     verified = False
@@ -12,7 +12,7 @@ def return_verified_value(min,max,value):
             pass
         if verified is False:
             value = input("Please enter a number between {0} and {1}:".format(min,max))
-    return value  #
+    return value
 
 
 def save_changes(restaurants):

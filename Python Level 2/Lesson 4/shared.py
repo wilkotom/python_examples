@@ -65,9 +65,6 @@ class Restaurant(object):
         return "{0} is a {1} place {4} minutes from here. Star rating {3}, Cost {2}".format(
             self.name, self.type, self.cost, self.fave, self.dist)
 
-    def as_dict(self):
-        return {"name": self.name, "type": self.type, "cost": self.cost, "like": self.fave, "dist": self.dist }
-
 
 class Formal(Restaurant):
     """Restaurants which require a reservation and have a dress code"""

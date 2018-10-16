@@ -62,22 +62,3 @@ while not finished:
         print("That's not a valid choice - try again!")
 
 
-def pig_latin(sen):
-    out = ''
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    for word in sen.split(' '):
-        if word[0].lower() in vowels:
-            word = word + 'way'
-        else:
-            word = word[1:] + word[0]
-            if word[-1] == 'q' and word[0] == 'u':
-                word = word[1:] + word[0]
-            while word[0] not in (vowels + ['y']):
-                word = word[1:] + word[0]
-                if word[-1] == 'q' and word[0] == 'u':
-                    word = word[1:] + word[0]
-            word = word + 'ay'
-        out = out + word.lower() + ' '
-    return out.rstrip()
-
-

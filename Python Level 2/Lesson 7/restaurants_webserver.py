@@ -1,41 +1,40 @@
 #!/usr/bin/env python3
 
-import web
+from bottle import get, response, run
 import shared
 
-urls = ( '/restaurants', 'Restaurants',
-         '/restaurant/(.*)', 'SpecificRestaurant',
-         '/score/([1-5])', 'RestaurantsByScore',
-         '/', 'Index')
-
-class RestaurantsByScore(object):
-    def GET (self, score):
-        score = int (score)
-        # List the restaurants with a particular score
-        return # Them
-
-        
-
-class Restaurants(object):
-    def GET(self):
-        print(restaurants)
-        web.header('Content-Type', 'text/plain')
-        return '\n'.join(restaurants.keys())
+@get('/')
+def index():
+    return "This is the index page"
 
 
-class SpecificRestaurant(object):
-    def GET (self, name):
-        web.header('Content-Type', 'text/plain')
-        return str(restaurants[name])
+@get('/restarants')
+def all_restaurants(self):
+    print(restaurants)
+    response.set_header('Content-Type', 'text/plain')
+    return '\n'.join(restaurants.keys())
 
 
-class Index(object):
-    def GET(self):
-        return "This is the index page"
+@get('/restaurants/<restaurant>')
+def specific_restaurant(restaurant):
+    response.set_header('Content-Type', 'text/plain')
+    return str(restaurants[restaurant])
+
+@get('/hello/<name:re:[A-Z][a-z]*>')
+def say_hello(name):
+    return f"Why hello there, {name}"
+
+
+@get('/score/<score>')
+def restaurants_by_score (score):
+    # check that the score provided is one of the digits 1-5
+    # hint: use a regular expression match
+    score = int (score)
+    #  get the restaurants with a particular score
+    return # those restaurants
 
 
 restaurants = shared.read_csvfile('restaurants-lesson7.csv')
-app = web.application(urls, globals())
 
 if __name__ == "__main__":
-    app.run()
+    run(host='localhost', port=8080)

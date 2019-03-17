@@ -10,7 +10,7 @@ def index():
 
 
 @get('/restarants')
-def all_restaurants(self):
+def all_restaurants():
     print(restaurants)
     response.set_header('Content-Type', 'text/plain')
     return '\n'.join(restaurants.keys())

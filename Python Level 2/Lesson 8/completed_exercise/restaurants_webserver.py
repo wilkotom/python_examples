@@ -10,7 +10,7 @@ def index():
 
 
 @get('/restarants')
-def all_restaurants(self):
+def all_restaurants():
     print(restaurants)
     response.set_header('Content-Type', 'text/plain')
     return '\n'.join(restaurants.keys())
@@ -35,6 +35,7 @@ def restaurants_by_score(score):
             places.append(str(place))
     return '<br/>'.join(places)
 
+
 @get('/addRestaurant')
 def display_add_restaurant_form():
     with open("tripdeviser-add.html") as html_template:
@@ -57,7 +58,7 @@ def add_new_restaurant():
 
 def generate_html_rest_list():
     list_entry = '<li><a href="/tripdeviser/{0}">{0}</a></li>'
-    html_output_fragment  = ''
+    html_output_fragment = ''
     for restaurant_name in sorted(restaurants):
         html_output_fragment = html_output_fragment + list_entry.format(restaurant_name)
     return html_output_fragment
@@ -77,4 +78,3 @@ if __name__ == "__main__":
     restaurants = shared.read_csvfile(filename)
     print(restaurants)
     run(host='localhost', port=8080)
-

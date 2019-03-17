@@ -1,69 +1,59 @@
 #!/usr/bin/env python3
 
-import web
+from bottle import get, request, response, run, post
 import shared
 
-urls = ( '/restaurants', 'Restaurants',
-         '/restaurant/(.*)', 'SpecificRestaurant',
-         '/tripdeviser/(.*)', 'TripDeviser',
-         '/addRestaurant','AddRestaurant',
-         '/score/([0-5])', 'RestaurantsByScore',
-         '/', 'Index')
 
-class RestaurantsByScore(object):
-    def GET (self, score):
-        score = int(score)
-        matching_places = []
-        for restaurant_name in restaurants:
-            if int(restaurants[restaurant_name].fave) == score:
-                matching_places.append(restaurant_name)
-            else:
-                print('{0} has score {1}'.format(restaurant_name, restaurants[restaurant_name].fave))
-        return '\n'.join(sorted(matching_places))
-
-class TripDeviser(object):
-    def GET (self, place):
-        return generate_response(place)
+@get('/')
+def index():
+    return "This is the index page"
 
 
-class AddRestaurant(object):
-    def GET(self):
-        with open("tripdeviser-add.html") as html_template:
-            output_html = html_template.read()
-        output_html = output_html.replace('{{RESTLIST}}', generate_html_rest_list())
-        return output_html
-
-    def POST(self):
-        # Add some code in here to add the input to the internal restaurants data
-        # Then save it out (call the function to save the changes)
-        # Then send the HTML for the new restaurant back, like for TripDevisor above
-        input_data = web.input()
-        name = input_data.name
-        type = input_data.type
-        cost = input_data.cost
-        fave = input_data.fave
-        dist = input_data.dist
-        restaurants[name] = shared.Restaurant(name, type, cost, fave, dist)
-        shared.save_changes(filename,restaurants)
-        return generate_response(name)
+@get('/restarants')
+def all_restaurants(self):
+    print(restaurants)
+    response.set_header('Content-Type', 'text/plain')
+    return '\n'.join(restaurants.keys())
 
 
-class Restaurants(object):
-    def GET(self):
-        print(restaurants)
-        web.header('Content-Type', 'text/plain')
-        return '\n'.join(sorted(restaurants.keys()))
+@get('/restaurants/<restaurant>')
+def specific_restaurant(restaurant):
+    response.set_header('Content-Type', 'text/plain')
+    return str(restaurants[restaurant])
 
 
-class SpecificRestaurant(object):
-    def GET (self, name):
-        web.header('Content-Type', 'text/plain')
-        return str(restaurants[name])
+@get('/tripdeviser/<place>')
+def trip_deviser(place):
+    return generate_response(place)
 
 
-class Index(object):
-    def GET(self):
-        return "This is the index page"
+@get('/score/<score:re:[1-5]>')
+def restaurants_by_score(score):
+    places = []
+    for place in restaurants.values():
+        if int(place.fave) >= int(score):
+            places.append(str(place))
+    return '<br/>'.join(places)
+
+@get('/addRestaurant')
+def display_add_restaurant_form():
+    with open("tripdeviser-add.html") as html_template:
+        output = html_template.read()
+    output = output.replace('{{RESTLIST}}', generate_html_rest_list())
+    return output
+
+
+@post('/addRestaurant')
+def add_new_restaurant():
+    name = request.forms.get('name')
+    cuisine = request.forms.get('type')
+    cost = request.forms.get('cost')
+    fave = request.forms.get('fave')
+    dist = request.forms.get('dist')
+    restaurants[name] = shared.Restaurant(name, cuisine, cost, fave, dist)
+    shared.save_changes(filename, restaurants)
+    return generate_response(name)
+
 
 def generate_html_rest_list():
     list_entry = '<li><a href="/tripdeviser/{0}">{0}</a></li>'
@@ -82,9 +72,9 @@ def generate_response(name):
     return output_html
 
 
-filename = 'restaurants-lesson8.csv'
-restaurants = shared.read_csvfile(filename)
-app = web.application(urls, globals())
-
 if __name__ == "__main__":
-    app.run()
+    filename = 'restaurants-lesson8.csv'
+    restaurants = shared.read_csvfile(filename)
+    print(restaurants)
+    run(host='localhost', port=8080)
+
